@@ -6,7 +6,7 @@ int main(){
     double A, B, resut;
     char dnv;
 
-    do {
+    do{
         printf("===============================\n");
         printf("   Simple Calculator\n");
         printf("===============================\n");
@@ -17,17 +17,18 @@ int main(){
         printf("4. Division\n");
         printf("5. Exit\n");
         printf("Option: ");
-        
-        } while (scanf("%d", &opcao) != 1 || opcao < 1 || opcao > 5);
+
+        while (scanf("%d", &opcao) != 1 || opcao < 1 || opcao > 5) {
             printf("This is an invalid option. Please enter a number between 1 and 5.\n");
             printf("Option: ");
-            while (getchar() != '\n'){
-            if (opcao == 5) {
-                printf("\nThank you for using the calculator! See you next time."); //aqui
-                    break;
-            }
+            while (getchar() != '\n');
         }
-        
+
+        if (opcao == 5){
+            printf("\nThank you for using the calculator! See you next time.\n");
+            break;
+        }
+
         printf("Enter the first number: ");
         while (scanf("%lf", &A) != 1) {
             printf("Invalid number. Try again: ");
@@ -39,25 +40,22 @@ int main(){
             printf("Invalid number. Try again: ");
             while (getchar() != '\n');
         }
-        
-        switch (opcao) {
+
+        switch (opcao){
             case 1:
                 resut = A + B;
                 printf("Result: %.2lf + %.2lf = %.2lf\n", A, B, resut);
                 break;
-
             case 2:
                 resut = A - B;
                 printf("Result: %.2lf - %.2lf = %.2lf\n", A, B, resut);
                 break;
-
             case 3:
                 resut = A * B;
                 printf("Result: %.2lf * %.2lf = %.2lf\n", A, B, resut);
                 break;
-
             case 4:
-                if (B == 0){
+                if (B == 0) {
                     printf("Error: Division by zero is not allowed.\n");
                 } else {
                     resut = A / B;
@@ -65,17 +63,18 @@ int main(){
                 }
                 break;
         }
-        
+
         printf("\nDo you want to perform another operation? (y/n): ");
         while (1){
             scanf(" %c", &dnv);
-            if (dnv == 'y' || dnv == 'Y' || dnv == 'n' || dnv == 'N'){
+            if (dnv == 'y' || dnv == 'Y' || dnv == 'n' || dnv == 'N') {
                 break;
-            } 
-            else{
-                printf("Invalid response. Please type 'y' for yes or 'n' for no.");
             }
+            printf("Invalid response. Please type 'y' for yes or 'n' for no: ");
         }
+//termina o "do" do dowhile
+    } while(dnv == 'y' || dnv == 'Y');
 
+    printf("\nThank you for using the calculator! See you next time.\n");
     return 0;
 }
